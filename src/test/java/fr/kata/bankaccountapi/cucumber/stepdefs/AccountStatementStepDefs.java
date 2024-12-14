@@ -6,6 +6,7 @@ import fr.kata.bankaccountapi.infrastructure.entity.AccountStatementEntity;
 import fr.kata.bankaccountapi.infrastructure.repository.AccountStatementRepository;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import java.time.LocalDate;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,7 +17,7 @@ public class AccountStatementStepDefs {
     @Given("the client has ${int} on his bank account")
     public void defineTheClientBankAccountBalance(long balance) {
         accountStatementRepository.deleteAll();
-        accountStatementRepository.save(new AccountStatementEntity(balance));
+        accountStatementRepository.save(new AccountStatementEntity(balance, LocalDate.now()));
     }
 
     @Then("the client receives the balance ${double}")

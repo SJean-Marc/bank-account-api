@@ -10,14 +10,15 @@ import fr.kata.bankaccountapi.domain.api.WithdrawFromAccount;
 import fr.kata.bankaccountapi.domain.error.MinimumOneDollarWithdrawalException;
 import fr.kata.bankaccountapi.domain.error.NoFundsException;
 import fr.kata.bankaccountapi.domain.spi.AccountLoader;
-import fr.kata.bankaccountapi.domain.spi.WithdrawSaver;
+import fr.kata.bankaccountapi.domain.spi.AccountTransactionSaver;
 import org.junit.jupiter.api.Test;
 
 class WithdrawDollarsFromAccountTest {
     private final AccountLoader accountLoader = mock(AccountLoader.class);
-    private final WithdrawSaver withdrawSaver = mock(WithdrawSaver.class);
+    private final AccountTransactionSaver accountTransactionSaver =
+        mock(AccountTransactionSaver.class);
     private final WithdrawFromAccount withdrawFromAccount =
-        new WithdrawDollarsFromAccount(accountLoader, withdrawSaver);
+        new WithdrawDollarsFromAccount(accountLoader, accountTransactionSaver);
 
     @Test
     void should_return_error_when_no_money_to_withdraw() {
@@ -47,6 +48,6 @@ class WithdrawDollarsFromAccountTest {
 
         withdrawFromAccount.withdraw(5);
 
-        verify(withdrawSaver, times(1)).save(5);
+        verify(accountTransactionSaver, times(1)).save(5);
     }
 }

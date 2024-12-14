@@ -24,10 +24,6 @@ public class AccountStatementEntity {
     public AccountStatementEntity() {
     }
 
-    public AccountStatementEntity(double transactionAmount) {
-        this.transactionAmount = transactionAmount;
-    }
-
     public AccountStatementEntity(double transactionAmount,
                                   LocalDate date) {
         this.transactionAmount = transactionAmount;
