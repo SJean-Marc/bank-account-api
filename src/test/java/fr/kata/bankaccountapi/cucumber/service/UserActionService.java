@@ -1,6 +1,6 @@
 package fr.kata.bankaccountapi.cucumber.service;
 
-import fr.kata.bankaccountapi.application.dto.MoneyDeposited;
+import fr.kata.bankaccountapi.application.dto.MoneyDepositedDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +13,7 @@ public class UserActionService {
     }
 
     public void deposit(int serverPort, int moneyDeposited) {
-        httpServiceClient.post("/deposit", serverPort, new MoneyDeposited(moneyDeposited));
+        httpServiceClient.post("/deposit", serverPort, new MoneyDepositedDto(moneyDeposited));
     }
 
     public ResponseEntity<String> recoverVersion(int serverPort) {
