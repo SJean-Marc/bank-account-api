@@ -1,4 +1,4 @@
-package fr.kata.bankaccountapi;
+package fr.kata.bankaccountapi.application;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -16,9 +16,16 @@ public class HttpServiceClient {
         this.restTemplate = builder.build();
     }
 
-    public ResponseEntity<String> getVersion(int serverPort) {
-        var url = buildFullUrl("/version", serverPort);
-        return restTemplate.getForEntity(url, String.class);
+    public <T> ResponseEntity<T> get(String endpoint, int serverPort, Class<T> responseType) {
+        var url = buildFullUrl(endpoint, serverPort);
+        return restTemplate.getForEntity(url, responseType);
+    }
+
+    public ResponseEntity<String> post(String endpoint,
+                                       int serverPort,
+                                       Object elementToPost) {
+        var url = buildFullUrl(endpoint, serverPort);
+        return restTemplate.postForEntity(url, elementToPost, String.class);
     }
 
     private String buildFullUrl(String endpoint, int serverPort) {
