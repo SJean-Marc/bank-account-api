@@ -9,6 +9,5 @@ import org.springframework.web.bind.annotation.RestController;
 public class DepositController {
     @PostMapping("/deposit")
     public void deposit(@RequestBody MoneyDeposited moneyDeposited) {
-
     }
 }
