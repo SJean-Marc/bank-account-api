@@ -11,8 +11,8 @@ import org.mockito.Mockito;
 
 class DepositDollarToAccountTest {
     private final DepositSaver depositSaver = Mockito.mock(DepositSaver.class);
-    private final DepositDollarToAccount depositDollarToAccount =
-        new DepositDollarToAccount(depositSaver);
+    private final DepositDollarsToAccount depositDollarToAccount =
+        new DepositDollarsToAccount(depositSaver);
 
     @Test
     void should_do_nothing_when_amount_is_equal_than_0() {

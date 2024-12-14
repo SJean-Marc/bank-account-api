@@ -3,10 +3,10 @@ package fr.kata.bankaccountapi.domain;
 import fr.kata.bankaccountapi.domain.api.DepositToAccount;
 import fr.kata.bankaccountapi.domain.spi.DepositSaver;
 
-public class DepositDollarToAccount implements DepositToAccount {
+public class DepositDollarsToAccount implements DepositToAccount {
     private final DepositSaver depositSaver;
 
-    public DepositDollarToAccount(DepositSaver depositSaver) {
+    public DepositDollarsToAccount(DepositSaver depositSaver) {
         this.depositSaver = depositSaver;
     }
 

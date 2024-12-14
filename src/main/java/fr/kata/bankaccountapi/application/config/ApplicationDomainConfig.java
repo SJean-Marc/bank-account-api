@@ -1,6 +1,6 @@
 package fr.kata.bankaccountapi.application.config;
 
-import fr.kata.bankaccountapi.domain.DepositDollarToAccount;
+import fr.kata.bankaccountapi.domain.DepositDollarsToAccount;
 import fr.kata.bankaccountapi.domain.api.DepositToAccount;
 import fr.kata.bankaccountapi.domain.spi.DepositSaver;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +11,6 @@ public class ApplicationDomainConfig {
 
     @Bean
     public DepositToAccount depositToAccount(DepositSaver depositSaver) {
-        return new DepositDollarToAccount(depositSaver);
+        return new DepositDollarsToAccount(depositSaver);
     }
 }
