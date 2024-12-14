@@ -6,6 +6,7 @@ import fr.kata.bankaccountapi.infrastructure.entity.AccountStatementEntity;
 import fr.kata.bankaccountapi.infrastructure.repository.AccountStatementRepository;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class AccountStatementStepDefs {
@@ -26,5 +27,31 @@ public class AccountStatementStepDefs {
             .reduce(Double::sum);
 
         assertThat(actualAccountBalance).hasValue(expectedAccountBalance);
+    }
+
+    @Then("the client receives")
+    public void theClientReceives(List<AccountStatement> expectedAccountStatements) {
+        var actualAccountStatements = accountStatementRepository.findAll()
+            .stream()
+            .map(this::mapToDto)
+            .toList();
+
+        assertThat(actualAccountStatements).containsExactlyElementsOf(expectedAccountStatements);
+    }
+
+    private AccountStatement mapToDto(AccountStatementEntity accountStatement) {
+        return new AccountStatement(
+            accountStatement.getDate().toString(),
+            accountStatement.getTransactionAmount(),
+            computeBalance(accountStatement)
+        );
+    }
+
+    private double computeBalance(AccountStatementEntity lastStatement) {
+        return accountStatementRepository.findAll()
+            .stream()
+            .filter(currentStatement -> currentStatement.getId() <= lastStatement.getId())
+            .mapToDouble(AccountStatementEntity::getTransactionAmount)
+            .sum();
     }
 }
