@@ -7,7 +7,6 @@ import fr.kata.bankaccountapi.cucumber.service.UserActionService;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.web.server.LocalServerPort;
 
 public class VersionStepDefs {
@@ -15,7 +14,7 @@ public class VersionStepDefs {
     private final UserActionService userActionService;
 
     public VersionStepDefs(@LocalServerPort int serverPort,
-                           @Autowired UserActionService userActionService) {
+                           UserActionService userActionService) {
         this.serverPort = serverPort;
         this.userActionService = userActionService;
     }
