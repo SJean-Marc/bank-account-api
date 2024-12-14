@@ -11,5 +11,5 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(classes = {BankAccountApiApplication.class},
     webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @CucumberOptions(features = "src/test/resources")
-public class CucumberIntegrationTest {
+public class CucumberIntegrationRunner {
 }
