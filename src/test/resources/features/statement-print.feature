@@ -5,8 +5,9 @@ Feature: print account statement
 
   Scenario: client ask to get the account statement
     Given the client deposit $200 into the account
-    When the client make a withdrawal of $10 from the account
+    And the client make a withdrawal of $10 from the account
     And the client deposit $100 into the account
+    When the client request the account statement
     Then the client receives
       | Date       | Amount | Balance |
       | 2023-12-14 | 200    | 200.0   |

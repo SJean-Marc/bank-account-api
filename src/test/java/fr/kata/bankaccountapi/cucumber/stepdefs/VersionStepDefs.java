@@ -2,7 +2,7 @@ package fr.kata.bankaccountapi.cucumber.stepdefs;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import fr.kata.bankaccountapi.cucumber.data.VersionStepsData;
+import fr.kata.bankaccountapi.cucumber.data.VersionStepData;
 import fr.kata.bankaccountapi.cucumber.service.UserActionService;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -21,19 +21,19 @@ public class VersionStepDefs {
 
     @Then("the client receives status code of {int}")
     public void theClientReceivesStatusCodeOf(int statusCode) {
-        assertThat(VersionStepsData.getStatus()).isEqualTo(statusCode);
+        assertThat(VersionStepData.getStatus()).isEqualTo(statusCode);
 
     }
 
     @When("the client calls version page")
     public void whenCallVersionPage() {
         final var version = userActionService.recoverVersion(serverPort);
-        VersionStepsData.setVersionAndStatusCode(version.getBody(),
+        VersionStepData.setVersionAndStatusCode(version.getBody(),
             version.getStatusCode().value());
     }
 
     @And("the client receives server version {double}")
     public void theClientReceivesServerVersion(double version) {
-        assertThat(VersionStepsData.getVersion()).isEqualTo(String.valueOf(version));
+        assertThat(VersionStepData.getVersion()).isEqualTo(String.valueOf(version));
     }
 }
