@@ -1,6 +1,7 @@
 package fr.kata.bankaccountapi.cucumber.service;
 
 import fr.kata.bankaccountapi.application.dto.MoneyDepositedDto;
+import fr.kata.bankaccountapi.application.dto.MoneyToWithdrawDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
@@ -18,5 +19,9 @@ public class UserActionService {
 
     public ResponseEntity<String> recoverVersion(int serverPort) {
         return httpServiceClient.get("/version", serverPort, String.class);
+    }
+
+    public void withdraw(int serverPort, double withdrawMoney) {
+        httpServiceClient.post("/withdraw", serverPort, new MoneyToWithdrawDto(withdrawMoney));
     }
 }
