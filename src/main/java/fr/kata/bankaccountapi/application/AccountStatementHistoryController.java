@@ -2,7 +2,7 @@ package fr.kata.bankaccountapi.application;
 
 import fr.kata.bankaccountapi.application.dto.AccountStatementDto;
 import fr.kata.bankaccountapi.domain.api.AccountStatementsHistory;
-import fr.kata.bankaccountapi.domain.model.AccountStatement;
+import fr.kata.bankaccountapi.domain.model.AccountStatementWithBalance;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +23,7 @@ public class AccountStatementHistoryController {
             .toList();
     }
 
-    private AccountStatementDto mapToDto(AccountStatement accountStatement) {
+    private AccountStatementDto mapToDto(AccountStatementWithBalance accountStatement) {
         return new AccountStatementDto(accountStatement.date(),
                                        accountStatement.amount(),
                                        accountStatement.balance());

@@ -1,7 +1,7 @@
 package fr.kata.bankaccountapi.domain;
 
 import fr.kata.bankaccountapi.domain.api.AccountStatementsHistory;
-import fr.kata.bankaccountapi.domain.model.AccountStatement;
+import fr.kata.bankaccountapi.domain.model.AccountStatementWithBalance;
 import fr.kata.bankaccountapi.domain.model.AccountStatementTransaction;
 import fr.kata.bankaccountapi.domain.spi.AccountLoader;
 import java.util.Collection;
@@ -15,16 +15,16 @@ public class AccountStatementsHistoryInDollar implements AccountStatementsHistor
     }
 
     @Override
-    public Collection<AccountStatement> findAllMovements() {
+    public Collection<AccountStatementWithBalance> findAllMovements() {
         return accountLoader.loadAllAccountTransactions()
             .stream()
             .map(this::buildAccountStatement)
             .toList();
     }
 
-    private AccountStatement buildAccountStatement(
+    private AccountStatementWithBalance buildAccountStatement(
         AccountStatementTransaction accountStatementTransaction) {
-        return new AccountStatement(
+        return new AccountStatementWithBalance(
             accountStatementTransaction.date(),
             accountStatementTransaction.transactionAmount(),
             calculateBalance(accountStatementTransaction)
