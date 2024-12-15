@@ -17,7 +17,7 @@ public class WithdrawDollarsFromAccount implements WithdrawFromAccount {
     }
 
     @Override
-    public void withdraw(double amount) {
+    public double withdraw(double amount) {
         var balance = accountLoader.loadBalance();
         if (hasFundsToWithdraw(amount, balance)) {
             throw new NoFundsException();
@@ -25,7 +25,7 @@ public class WithdrawDollarsFromAccount implements WithdrawFromAccount {
         if (amount < 1) {
             throw new MinimumOneDollarWithdrawalException();
         }
-        accountSaver.save(-amount);
+        return accountSaver.save(-amount);
     }
 
     private static boolean hasFundsToWithdraw(double amount, double balance) {

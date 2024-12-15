@@ -18,8 +18,9 @@ public class DatabaseAccountSaver implements AccountSaver {
     }
 
     @Override
-    public void save(double amount) {
-        accountStatementRepository.save(
+    public double save(double amount) {
+        var depositSaved = accountStatementRepository.save(
             new AccountStatementEntity(amount, currentDateService.getCurrentDate()));
+        return depositSaved.getTransactionAmount();
     }
 }
