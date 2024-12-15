@@ -19,11 +19,11 @@ public class HttpServiceClient {
         return restTemplate.getForEntity(url, responseType);
     }
 
-    public ResponseEntity<String> post(String endpoint,
+    public void post(String endpoint,
                                        int serverPort,
                                        Object elementToPost) {
         var url = buildFullUrl(endpoint, serverPort);
-        return restTemplate.postForEntity(url, elementToPost, String.class);
+        restTemplate.postForEntity(url, elementToPost, String.class);
     }
 
     private String buildFullUrl(String endpoint, int serverPort) {
