@@ -17,10 +17,7 @@ public class DatabaseAccountLoader implements AccountLoader {
 
     @Override
     public double loadBalance() {
-        return accountStatementRepository.findAll()
-            .stream()
-            .map(AccountStatementEntity::getTransactionAmount)
-            .reduce(0.0, Double::sum);
+        return accountStatementRepository.sumTransactionAmount();
     }
 
     @Override
