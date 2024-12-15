@@ -1,9 +1,9 @@
 # Bank account kata
 
 ## Description
-Deposit and Withdrawal
-Account statement (date, amount, balance)
-Statement printing
+- Deposit and Withdrawal
+- Account statement (date, amount, balance)
+- Statement printing
 
 ##  Acceptance Criteria
 - A client can make a deposit and a withdrawal
