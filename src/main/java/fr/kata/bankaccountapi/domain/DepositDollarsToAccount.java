@@ -1,6 +1,7 @@
 package fr.kata.bankaccountapi.domain;
 
 import fr.kata.bankaccountapi.domain.api.DepositToAccount;
+import fr.kata.bankaccountapi.domain.error.ValueDepositedNotAcceptedException;
 import fr.kata.bankaccountapi.domain.spi.AccountSaver;
 
 public class DepositDollarsToAccount implements DepositToAccount {
@@ -11,9 +12,10 @@ public class DepositDollarsToAccount implements DepositToAccount {
     }
 
     @Override
-    public void deposit(double amount) {
+    public double deposit(double amount) {
         if (amount > 0) {
-            accountSaver.save(amount);
+            return accountSaver.save(amount);
         }
+        throw new ValueDepositedNotAcceptedException();
     }
 }

@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface AccountStatementRepository extends
     ListCrudRepository<AccountStatementEntity, Long> {
 
-    @Query("SELECT SUM(transactionAmount) FROM AccountStatementEntity")
+    @Query("SELECT coalesce(SUM(transactionAmount),0) FROM AccountStatementEntity")
     double sumTransactionAmount();
 }

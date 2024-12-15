@@ -16,6 +16,10 @@ public class WithdrawalMyStepDefs {
 
     @When("the client make a withdrawal of ${double} from the account")
     public void theClientMakeAWithdrawalFromTheAccount(double withdrawMoney) {
-        userActionService.withdraw(serverPort, withdrawMoney);
+        try {
+            userActionService.withdraw(serverPort, withdrawMoney);
+        } catch (RuntimeException exception) {
+
+        }
     }
 }

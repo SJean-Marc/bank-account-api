@@ -34,7 +34,7 @@ public class AccountStatementStepDefs {
         accountStatementRepository.save(new AccountStatementEntity(balance, LocalDate.now()));
     }
 
-    @Then("the client receives the balance ${double}")
+    @Then("the client has a balance of ${double}")
     public void theClientReceivesTheBalance$(double expectedAccountBalance) {
         var actualAccountBalance = accountStatementRepository.findAll()
             .stream()
