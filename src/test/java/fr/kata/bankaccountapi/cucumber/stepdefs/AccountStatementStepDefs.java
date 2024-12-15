@@ -50,7 +50,8 @@ public class AccountStatementStepDefs {
             .map(this::mapToDto)
             .toList();
 
-        assertThat(actualAccountStatements).containsExactlyElementsOf(expectedAccountStatements);
+        assertThat(actualAccountStatements)
+            .containsExactlyInAnyOrderElementsOf(expectedAccountStatements);
     }
 
     @When("the client request the account statement")

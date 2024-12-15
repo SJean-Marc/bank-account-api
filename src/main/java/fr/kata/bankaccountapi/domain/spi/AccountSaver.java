@@ -1,6 +1,6 @@
 package fr.kata.bankaccountapi.domain.spi;
 
 @FunctionalInterface
-public interface AccountTransactionSaver {
+public interface AccountSaver {
     void save(double amount);
 }

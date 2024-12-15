@@ -7,7 +7,7 @@ import fr.kata.bankaccountapi.domain.api.AccountStatementsHistory;
 import fr.kata.bankaccountapi.domain.api.DepositToAccount;
 import fr.kata.bankaccountapi.domain.api.WithdrawFromAccount;
 import fr.kata.bankaccountapi.domain.spi.AccountLoader;
-import fr.kata.bankaccountapi.domain.spi.AccountTransactionSaver;
+import fr.kata.bankaccountapi.domain.spi.AccountSaver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,14 +15,14 @@ import org.springframework.context.annotation.Configuration;
 public class ApplicationDomainConfig {
 
     @Bean
-    public DepositToAccount depositToAccount(AccountTransactionSaver accountTransactionSaver) {
-        return new DepositDollarsToAccount(accountTransactionSaver);
+    public DepositToAccount depositToAccount(AccountSaver accountSaver) {
+        return new DepositDollarsToAccount(accountSaver);
     }
 
     @Bean
     public WithdrawFromAccount withdrawFromAccount(AccountLoader accountLoader,
-                                                   AccountTransactionSaver accountTransactionSaver) {
-        return new WithdrawDollarsFromAccount(accountLoader, accountTransactionSaver);
+                                                   AccountSaver accountSaver) {
+        return new WithdrawDollarsFromAccount(accountLoader, accountSaver);
     }
 
     @Bean

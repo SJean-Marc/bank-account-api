@@ -1,19 +1,19 @@
 package fr.kata.bankaccountapi.domain;
 
 import fr.kata.bankaccountapi.domain.api.DepositToAccount;
-import fr.kata.bankaccountapi.domain.spi.AccountTransactionSaver;
+import fr.kata.bankaccountapi.domain.spi.AccountSaver;
 
 public class DepositDollarsToAccount implements DepositToAccount {
-    private final AccountTransactionSaver accountTransactionSaver;
+    private final AccountSaver accountSaver;
 
-    public DepositDollarsToAccount(AccountTransactionSaver accountTransactionSaver) {
-        this.accountTransactionSaver = accountTransactionSaver;
+    public DepositDollarsToAccount(AccountSaver accountSaver) {
+        this.accountSaver = accountSaver;
     }
 
     @Override
     public void deposit(double amount) {
         if (amount > 0) {
-            accountTransactionSaver.save(amount);
+            accountSaver.save(amount);
         }
     }
 }
