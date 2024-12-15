@@ -48,6 +48,6 @@ class WithdrawDollarsFromAccountTest {
 
         withdrawFromAccount.withdraw(5);
 
-        verify(accountTransactionSaver, times(1)).save(5);
+        verify(accountTransactionSaver, times(1)).save(-5);
     }
 }
