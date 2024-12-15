@@ -1,6 +1,5 @@
 package fr.kata.bankaccountapi.cucumber.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -11,7 +10,6 @@ public class HttpServiceClient {
     private static final String BASE_URL = "http://localhost:";
     private final RestTemplate restTemplate;
 
-    @Autowired
     public HttpServiceClient(final RestTemplateBuilder builder) {
         this.restTemplate = builder.build();
     }
@@ -21,11 +19,11 @@ public class HttpServiceClient {
         return restTemplate.getForEntity(url, responseType);
     }
 
-    public ResponseEntity<String> post(String endpoint,
+    public void post(String endpoint,
                                        int serverPort,
                                        Object elementToPost) {
         var url = buildFullUrl(endpoint, serverPort);
-        return restTemplate.postForEntity(url, elementToPost, String.class);
+        restTemplate.postForEntity(url, elementToPost, String.class);
     }
 
     private String buildFullUrl(String endpoint, int serverPort) {

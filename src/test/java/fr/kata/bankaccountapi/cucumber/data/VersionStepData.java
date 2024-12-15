@@ -1,6 +1,6 @@
 package fr.kata.bankaccountapi.cucumber.data;
 
-public class VersionStepsData {
+public class VersionStepData {
     private static int status;
     private static String version;
 
@@ -9,8 +9,8 @@ public class VersionStepsData {
     }
 
     public static void setVersionAndStatusCode(String version, int status) {
-        VersionStepsData.version = version;
-        VersionStepsData.status = status;
+        VersionStepData.version = version;
+        VersionStepData.status = status;
     }
 
     public static String getVersion() {

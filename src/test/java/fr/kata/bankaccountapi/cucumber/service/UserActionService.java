@@ -1,5 +1,6 @@
 package fr.kata.bankaccountapi.cucumber.service;
 
+import fr.kata.bankaccountapi.application.dto.AccountStatementDto;
 import fr.kata.bankaccountapi.application.dto.MoneyDepositedDto;
 import fr.kata.bankaccountapi.application.dto.MoneyToWithdrawDto;
 import org.springframework.http.ResponseEntity;
@@ -23,5 +24,10 @@ public class UserActionService {
 
     public void withdraw(int serverPort, double withdrawMoney) {
         httpServiceClient.post("/withdraw", serverPort, new MoneyToWithdrawDto(withdrawMoney));
+    }
+
+    public ResponseEntity<AccountStatementDto[]> accountStatement(int serverPort) {
+        return httpServiceClient.get("/account-statement", serverPort,
+            AccountStatementDto[].class);
     }
 }
