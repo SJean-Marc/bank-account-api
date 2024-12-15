@@ -4,16 +4,16 @@ import fr.kata.bankaccountapi.domain.api.WithdrawFromAccount;
 import fr.kata.bankaccountapi.domain.error.MinimumOneDollarWithdrawalException;
 import fr.kata.bankaccountapi.domain.error.NoFundsException;
 import fr.kata.bankaccountapi.domain.spi.AccountLoader;
-import fr.kata.bankaccountapi.domain.spi.AccountTransactionSaver;
+import fr.kata.bankaccountapi.domain.spi.AccountSaver;
 
 public class WithdrawDollarsFromAccount implements WithdrawFromAccount {
     private final AccountLoader accountLoader;
-    private final AccountTransactionSaver accountTransactionSaver;
+    private final AccountSaver accountSaver;
 
     public WithdrawDollarsFromAccount(AccountLoader accountLoader,
-                                      AccountTransactionSaver accountTransactionSaver) {
+                                      AccountSaver accountSaver) {
         this.accountLoader = accountLoader;
-        this.accountTransactionSaver = accountTransactionSaver;
+        this.accountSaver = accountSaver;
     }
 
     @Override
@@ -25,7 +25,7 @@ public class WithdrawDollarsFromAccount implements WithdrawFromAccount {
         if (amount < 1) {
             throw new MinimumOneDollarWithdrawalException();
         }
-        accountTransactionSaver.save(-amount);
+        accountSaver.save(-amount);
     }
 
     private static boolean hasFundsToWithdraw(double amount, double balance) {
