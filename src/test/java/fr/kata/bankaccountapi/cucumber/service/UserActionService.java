@@ -27,7 +27,7 @@ public class UserActionService {
     }
 
     public ResponseEntity<AccountStatementDto[]> accountStatement(int serverPort) {
-        return httpServiceClient.get("/account-statement", serverPort,
+        return httpServiceClient.get("/account-statements", serverPort,
             AccountStatementDto[].class);
     }
 }

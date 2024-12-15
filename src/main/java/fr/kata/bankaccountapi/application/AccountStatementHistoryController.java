@@ -15,7 +15,7 @@ public class AccountStatementHistoryController {
         this.accountStatementsHistory = accountStatementsHistory;
     }
 
-    @GetMapping("/account-statement")
+    @GetMapping("/account-statements")
     public List<AccountStatementDto> withdraw() {
         return accountStatementsHistory.findAllMovements()
             .stream()
