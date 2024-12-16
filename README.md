@@ -22,6 +22,7 @@ mvn test
 - Integration test with h2 database are running in the test phase.
 Only for the purpuse of the test, in later versions another phase should be created to run the integration tests.
 - The API is not secured, it should be secured with JWT or another security mechanism.
+- The transaction date should contains a timing 
 ## Roles and Users not included in this version
 As not define in the requirements, the roles and users are not included in this version of the API.
 The API is supposed to be used by a single user with full access to all the resources.
